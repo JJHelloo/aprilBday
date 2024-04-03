@@ -1,0 +1,234 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #f0e8e8; */
+    background-color: rgb(58, 0, 0);
+}
+
+.card-container {
+    perspective: 1000px;
+    width: 300px;
+    height: 550px; 
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    cursor: pointer;
+    border: 1px solid #f78fa7; /* Adding a border for definition */
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #fff4f4;
+}
+
+.front {
+    z-index: 2;
+}
+
+.balloons {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.photo-placeholder {
+    font-size: 14px;
+    color: #333;
+    height: 160px; /* Adjust as needed */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: relative; /* Add position relative here */
+    margin-bottom: 20px;
+    overflow: hidden; /* This will hide any overflow if the image is taller than the placeholder */
+}
+
+.photo-placeholder span {
+    position: absolute; /* This will make the span sit on top of the img if it's there */
+    z-index: 10; /* Higher z-index ensures it's on top of the image */
+    width: 100%; /* Ensure the span covers the width of the placeholder */
+    height: 100%; /* Ensure the span covers the height of the placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo {
+    width: 100%; /* Stretch across the full width */
+    height: 100%; /* Stretch across the full height, may cause distortion */
+    object-fit: cover; /* This will cover the area without distortion but might clip the image */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.back {
+    transform: rotateY(180deg);
+    padding: 20px;
+    box-sizing: border-box;
+}
+.back h1 {
+    font-size: 24px;
+    color: #f78fa7;
+    margin: 0;
+    padding-top: 20px;
+}
+
+.message {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.signature {
+    font-size: 16px;
+    color: #333;
+    text-align: right;
+    padding: 10px 20px;
+    margin-top: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f78fa7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+.balloons {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 150px; 
+    padding: 20px 0;
+}
+
+.balloon {
+    width: 50px; 
+    height: 65px; 
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+    margin: 0 5px;
+    animation: float 3s ease-in-out infinite;
+
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 2px;
+    height: 75px; 
+    background: #000;
+    transform: translateX(-50%);
+}
+.heart {
+    position: relative;
+    display: inline-block;
+    width: 20px; /* Smaller width */
+    height: 30px; /* Adjusted height for proportionality */
+    margin: 0 auto;
+    transform: rotate(-25deg); /* Slight tilt */
+    margin-left: 40px; /* Move to the left */
+  }
+  
+  .heart:before,
+  .heart:after {
+    position: absolute;
+    content: "";
+    left: 30px; /* Adjusted for smaller width */
+    top: 0;
+    width: 30px; /* Smaller width */
+    height: 48px; /* Adjusted height for proportionality */
+    background: red;
+    border-radius: 30px 30px 0 0; /* Adjusted for smoother curvature */
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  
+  .heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+  
+
+
+.star {
+    position: relative;
+    display: block;
+    color: goldenrod;
+    width: 0px;
+    height: 0px;
+    border-right:  10px solid transparent;
+    border-bottom: 7px  solid goldenrod;
+    border-left:   10px solid transparent;
+    margin: 7px auto;
+    transform: rotate(35deg);
+}
+
+.star:before {
+    border-bottom: 8px solid goldenrod;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -4.5px;
+    left: -6.5px;
+    display: block;
+    content: '';
+    transform: rotate(-35deg);
+}
+
+.star:after {
+    position: absolute;
+    display: block;
+    color: goldenrod;
+    top: 0.3px;
+    left: -10.7px;
+    width: 0px;
+    height: 0px;
+    border-right:  10px solid transparent;
+    border-bottom: 7px  solid goldenrod;
+    border-left:   10px solid transparent;
+    transform: rotate(-70deg);
+    content: '';
+}
+
+
